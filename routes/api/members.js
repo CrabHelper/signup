@@ -28,7 +28,6 @@ router.post('/', (req, res) => {
         signtime: Date.now(),
         status: 'active'
     }   
-    console.log(`${JSON.stringify(newMember, null, " ")}`);
 
     if (!newMember.name || !newMember.email) {
         return res.status(400).json({ msg: 'Please include a name and email'});
