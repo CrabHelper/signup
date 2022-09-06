@@ -29,8 +29,8 @@ router.post('/', (req, res) => {
         status: 'active'
     }   
 
-    if (!newMember.name || !newMember.email) {
-        return res.status(400).json({ msg: 'Please include a name and email'});
+    if (!newMember.name || !newMember.email || !newMember.experience) {
+        return res.status(400).json({ msg: 'Please include a name, email, and experience'});
     }  
     //connect to mongo
     //members.save(newMember)
