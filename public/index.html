@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Club Sign Up</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>Coding Club Sign Up Form</header>
+    <main>
+        <form action="SendJ" method="POST">
+            <label for="name1" class="question">First Name</label><br>
+            <input type="text" name="firstname" id="name1"><br>
+            <label for="name2" class="question">Last Name</label><br>
+            <input type="text" name="lastname" id="name2"><br>
+            <label for="quantity" class="question">Class Year</label><br>
+            <input type="number" id="quantity" name="year" min="2023" max="2027"><br>
+            <div class="question">
+                <p>Do you have coding experience?</p><br>
+                <input type="radio" name="experience" id="no" value="no">
+                <label for="no">No</label><br>
+                <input type="radio" name="experience" id="yes" value="yes">
+                <label for="yes">yes</label>
+
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+    <aside>aside</aside>
+    <script>
+        
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        const data = new FormData(event.target);
+
+        const value = Object.fromEntries(data.entries());
+        let res = await fetch('http://localhost:5000/', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(value)
+        });
+        console.log(res)
+
+    }
+
+
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', handleSubmit);
+
+    </script>
+</body>
+</html>
