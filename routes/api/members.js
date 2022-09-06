@@ -55,6 +55,7 @@ router.put('/:id', (req, res) => {
             if (member.id === parseInt(req.params.id)) {
                 member.name = updMember.name ? updMember.name : member.name;
                 member.email = updMember.email ? updMember.email : updMember.email;
+                member.experience = updMember.experience ? updMember.experience : updMember.experience;
 
                 res.json({ msg: 'Member updated', member});
             }
